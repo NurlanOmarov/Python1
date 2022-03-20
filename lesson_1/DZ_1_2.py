@@ -3,17 +3,25 @@
 #К каждому элементу списка добавить 17 и заново вычислить сумму тех чисел из этого списка, сумма цифр которых делится нацело на 7.
 #* Решить задачу под пунктом b, не создавая новый список.
 
-for i in range(1, 1001, 2):
-    i **=3
-    summ = 0
-    while i > 0:
-        digit = i % 10
-        summ = summ + digit
-        i = i // 10
-        if summ % 7 == 0:
-            i += 17
-            while i > 0:
-                digit = i % 10
-                summ = summ + digit
-                i = i // 10
-            print(summ)
+
+my_list = []
+for num in range(1, 1001, 2):
+    my_list.append(num ** 3)
+total_sum = 0
+for num in my_list:
+    sub_sum = 0
+    for sub_num in str(num):
+        total_sum += int(sub_num)
+    if sub_sum % 7 == 0:
+        total_sum += num
+print(total_sum)
+
+total_sum = 0
+for num in my_list:
+    num += 17
+    sub_sum = 0
+    for sub_num in str(num):
+        sub_sum += int(sub_num)
+    if sub_sum % 7 == 0:
+        total_sum += num
+print(total_sum)
